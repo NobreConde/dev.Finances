@@ -1,10 +1,11 @@
 /* Global */
 :root {
     --dark-blue: #363f5f;
+    --lite-blue: #d8e3f1;
+    --lime-green: #12a454;
     --lite-green: #49aa26;
     --white: #fff;
-    --red: #e92929;
-    --lime-green: #12a454;
+    --red: #e92929;    
 }
 
 * {
@@ -14,8 +15,20 @@
 }
 
 body {
-    background: #f0f2f5;
+    background: var(--lite-blue);
     font-family: 'Poppins', sans-serif;
+}
+
+.sr-only { /* css trick */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
 }
 
 .container {
@@ -69,6 +82,10 @@ header h1#logo {
 .card h3 {
     font-weight: normal;
     font-size: 1rem;
+    /* alterando o posicionamento dos ícones dos cards */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .card p {
@@ -82,7 +99,7 @@ header h1#logo {
     color: var(--white);
 }
 
-/*Table*/
+/* Table */
 
 #data-table {
     width: 100%;
@@ -127,7 +144,7 @@ td.expense {
     color: var(--red);
 }
 
-/*Footer*/
+/* Footer */
 
 footer {
     text-align: center;
