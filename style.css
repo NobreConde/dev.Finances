@@ -4,6 +4,7 @@
     --lite-blue: #d8e3f1;
     --lime-green: #12a454;
     --lite-green: #49aa26;
+    --lite-green2: #3dd705;
     --white: #fff;
     --red: #e92929;    
 }
@@ -12,6 +13,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    font-size: 93.75%; /* o mesmo que 15px */
 }
 
 body {
@@ -31,13 +36,16 @@ body {
     border-width: 0;
 }
 
+header img {
+    margin-bottom: 30px;
+}
+
 .container {
     width: min(90vw, 800px);
     margin: auto;
 }
 
 /* Titles */
-
 h2 {
     margin-top: 3.2rem;
     margin-bottom: 0.8rem;
@@ -45,8 +53,53 @@ h2 {
     font-weight: normal;
 }
 
- /* Header */
+/* Links & Buttons */
+a {
+    color: var(--lite-green);
+    text-decoration: none;
+}
 
+a:hover {
+    color: var(--lite-green2);
+}
+
+button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 0.25rem;
+    color: var(--white);
+    background: var(--lite-green);
+    padding: 0;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--lime-green);
+}
+
+.button.new { /* feito para o distaciamento do botão adcionar */
+    display: inline-block;
+    margin-bottom: .8rem;
+}
+
+.button.cancel {
+    color: var(--red);
+    border-radius: 0.25rem;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px var(--red) solid;
+    opacity: 0.6;
+}
+
+.button.cancel:hover {
+    opacity: 1;
+}
+
+/* Header */
 header {
     background: #2d4a22;
     padding: 2rem 0 10rem;
@@ -59,7 +112,6 @@ header h1#logo {
 }
 
 /* Balance */
-
 #balance {
     margin-top: -8rem;
 }
@@ -70,7 +122,6 @@ header h1#logo {
 }
 
 /* Cards */
-
 .card {
     background: white;
     padding: 1.5rem 2rem;
@@ -100,10 +151,17 @@ header h1#logo {
 }
 
 /* Table */
+#transaction {
+    display: block;
+    width: 100%;
+    /* mobile da tabela */
+    overflow-x: auto;
+}
 
 #data-table {
     width: 100%;
     border-spacing: 0 0.5rem;
+    color: #969cb3;
 }
 
 table thead tr th:first-child,
@@ -111,7 +169,12 @@ table tbody tr td:first-child {
     border-radius: 0.25rem 0 0 0.25rem;
 }
 
-table th {
+table thead tr th:last-child,
+table tbody tr td:last-child {
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+
+table thead th {
     background-color: var(--white);
     font-weight: normal;
     padding: 1rem 2rem;
@@ -144,11 +207,85 @@ td.expense {
     color: var(--red);
 }
 
-/* Footer */
+/* Modal de inserção */
+.modal-overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+}
 
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background: #f0f2f5;
+    padding: 2.4rem;
+    border-radius: 0.25rem;
+    /* width: 90%;
+    max-width: 500px; */
+}
+
+/* Form */
+#form {
+    max-width: 500px;
+}
+
+#form h2 {
+    margin-top: 0;
+}
+
+input {
+    border: none;
+    border-radius: 0.2rem;
+    padding: 0.8rem;
+    width: 100%;
+}
+
+.input-group {
+    margin-top: 0.8rem;
+}
+
+.input-group small {
+    opacity: 0.4;
+}
+
+.input-group.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-group.actions .button,
+.input-group.actions button {
+    width: 48%;
+}
+
+/* Footer */
 footer {
     text-align: center;
     padding: 4rem 0 2rem;
     color: var(--dark-blue);
     opacity: 0.6;
+}
+
+/* Responsive */
+@media (min-width: 800px) {
+    html {
+        font-size: 87.5%; /* mesmo que 14px */
+    }
+
+    #balance {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem; /* espaço entre os cards */
+    }
 }
